@@ -1,0 +1,201 @@
+------------------------------------------------------------------------------------------------------------------------------------------------------
+TITLE:       Claims																																
+Name:	       Parv Gadhethariya
+ROLL NO:     2201CS91
+Declaration of Authorship
+This txt file claims.txt, is part of the miniproject of CS210.
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Files:
+==========
+*All the files I submitted, asm.cpp and emu.cpp and claims.txt, have my name and student id at the start, along with a declaration of authorship.
+
+The evidence for the given test files (test1 to test4).asm have been kept in the folder "Given Test Files" . They include the following -
+1) 3 output files for test1.asm (test1.log,test1.lst,test1.o) 
+2) 3 output file for test2.asm  (test2.log,test2.lst,test2.o) 
+3) 3 output files for test3.asm (test3.log,test3.lst,test3.o)
+4) 3 output files for test4.asm (test4.log,test4.lst,test4.o)
+
+CUSTOM Test File:-
+1) 4 output files for mytest1.asm (mytest1.asm,mytest1.log,mytest1.lst,mytest1.o) 
+2) 4 output files for mytest2.asm (mytest2.asm,mytest2.log,mytest2.lst,mytest2.o)
+
+COMPLIATION INSTRUCTIONS: 
+========================
+
+asm.cpp :- 
+	Windows, Ubuntu - 
+	    
+		g++ asm.cpp -o asm
+	   	./asm <insert_file_name>.asm
+
+emu.cpp :- 
+	Windows, Ubuntu -
+		g++ emu.cpp -o emu
+	    	./emu  -<OPTION> <insert_file_name>.object
+		
+		where option can be : 
+			trace 
+			before
+			after 
+			isa   
+
+
+=============================
+Program format and structure:
+=============================
+1. The assembler:
+
+	EXECUTION FORMAT: ./asm.exe filename.asm
+
+    * with two data structures to store labels and a mnemonic table with expected operands, respectively.
+    * uses a single routine for both passes.
+    * detects label errors.
+    * Consistent and sensible formatting with sensible program structure. 
+    * sensible variable, function & type names with explanatory comments.
+		* advanced listing file.
+		* assembles test programs.
+
+2. The emulator (if you are submitting) :
+
+	EXECUTION FORMAT: ./emu.exe filename.o
+
+		* with three data structures to store respectively memory, mnemonic table with expected operands
+		  and a linked list structure word.
+    * loads object file, 
+    * by giving the instructions like "-before/-after", the program can produce a memory dump before/after execution.
+    * by giving the instruction "-trace", the program prints the result of the program executed.
+    * detects errant programs.
+
+PROJECT FORMAT AND STRUCTURE:
+=============================
+ASSEMBLER :-
+ 
+--> asm.cpp is the main and the only file for the assembler
+
+--> Implementeed a 2-pass assembler in the language - C++.In the code, comments or self-descriptive variable names have been used.
+
+--> All instructions mentioned in the prject detail file ahve been implemented (includeing SET instruction)
+
+--> The assewmbler outputs the required correct information in the form of three files
+       *  Log file in 		.log file for errors and warnings
+       *  Listing file in 	.lst file for listing 
+       *  Machine Code in 	.o file for machine code object
+		note-	if the program contains only warnings, it will generate the all 3 files for the .ams file 
+				but if the program contains errors, it will generate only the log file
+
+--> All errors diagnosed are written in .log file along with thier line numbers. For e.g unknown instruction , no such label , duplicate label.
+It also generates warnings whenever detected. For e.g there is a label declared but has not been used in the code.  
+
+--> Listing file is generated in the optimum format 
+		For e.g mytest1.lst :- 
+
+-------------------------------------
+00000000		 main:
+00000000 00001300 main:	ldc el0
+00000001 00000004 		ldnl 0
+00000002 00000006 		add
+00000003 00001400 		ldc el1
+00000004 00000004 		ldnl 0
+00000005 00000006 		add
+00000006 00001500 		ldc el2
+00000007 00000004 		ldnl 0
+00000008 00000006 		add
+00000009 00001600 		ldc el3
+0000000a 00000004 		ldnl 0
+0000000b 00000006 		add
+0000000c 00000200 		ldc 2
+0000000d 00000009 		shr
+0000000e ffffff0a 		adj -1 
+0000000f 00000003 		stl 0
+00000010 00000002 		ldl 0
+00000011 00000011 		br 0
+00000012 00000012 		HALT
+00000013		 el0:
+00000013 00000001 el0: data 1
+00000014		 el1:
+00000014 00000002 el1: data 2
+00000015		 el2:
+00000015 00000003 el2: data 3
+00000016		 el3:
+00000016 00000004 el3: data 4
+--------------------------------------
+
+
+--> Assembler successfully skips empty lines and comments
+
+--> The implementation of the instruction SET can be seen in the breakdown of the code 
+
+--> Assembler accepts decimal, octal and hexadecimal values in data.
+
+
+Testing:
+============================= 
+
+1)
+#Input: asm test1.asm
+#Output: 
+a. test1.l 
+b. test1.log (without any error messages)
+c. test1.o
+
+2)
+#Input:asm test2.asm
+#Output: 
+a. test2.l 
+b. test2.log
+c. test2.o
+
+Error messages:
+1. ERROR: Line 0: Label is already used.
+2. ERROR: Line 1: Not a number.
+3. ERROR: Line 4: Not a number.
+4. ERROR: Line 5: Invalid label name found, It should begin with a letter.
+5. ERROR: Line 5: Invalid mnemonic found.
+6. ERROR: Line 6: Invalid mnemonic found.
+
+
+3)
+#Input:asm test3.asm
+#Output: 
+a. test3.l 
+b. test3.log (without any error messages)
+c. test3.o
+
+4)
+#Input:asm test4.asm
+#Output: 
+a. test4.l 
+b. test4.log (without any error messages)
+c. test4.o
+
+5)
+#Input:asm mytest1.asm
+#Output: 
+a. mytest1.l 
+b. mytest1.log (without any error messages)
+c. mytest1.o
+
+6)
+#Input:asm mytest2.asm
+#Output: 
+a. mytest2.l 
+b. mytest2.log (without any error messages)
+c. mytest2.o
+
+
+
+2. The emulator:
+
+--> For all the test case(except test3) (including the given test files , custom files and bubblesort program), the respective .o files are working with all the Functionalities.(test1 is going forever.)
+
+--> test3 contains SET which i haven't implemented that's why it is giving "Incorrect mnemonic encountered".
+
+-->The others were tested without any errors detected and produced execution data both on the screen and 
+output text file for each example according to the usage instruction. 
+
+--> mem_dump file is also generated upon execution.
+
+Ex:-
+#Input: emu -trace mytest1.asm
+#Output: triangle_memdump.txt
