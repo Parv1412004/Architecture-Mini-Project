@@ -1,8 +1,0 @@
-1. ERROR: Line 0: Label is already used.
-2. ERROR: Line 1: Not a number.
-3. ERROR: Line 2: Missing operand.
-4. ERROR: Line 3: Unexpected operand.
-5. ERROR: Line 4: Extra operand.
-6. ERROR: Line 5: Invalid label name found, It should begin with a letter.
-7. ERROR: Line 5: Invalid mnemonic found.
-8. ERROR: Line 6: Invalid mnemonic found.
