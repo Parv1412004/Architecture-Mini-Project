@@ -97,7 +97,6 @@ Runs the **Bubble Sort program** in SIMPLE assembly and prints execution trace.
 * [x] Test programs (valid + error cases)
 * [x] Custom test programs
 * [x] Bubble sort program in SIMPLE assembly
-* [ ] SET pseudo-instruction (not implemented)
 
 ---
 
